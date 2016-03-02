@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ButtonClicker</string>
+    <string name="action_settings">Settings</string>
+    <string name="pressMeButton">Press Me</string>
+</resources>
