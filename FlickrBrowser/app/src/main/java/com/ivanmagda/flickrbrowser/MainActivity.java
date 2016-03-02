@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +15,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Any local variable, used but not declared in an inner class must be definitely assigned
+        // before the body of the inner class.
+        final TextView textView = (TextView)findViewById(R.id.jsonTextView);
+
+        final GetRawData getRawData = new GetRawData("https://api.flickr.com/services/feeds/photos_public.gne?tags=sexy,lady&format=json&nojsoncallback=1");
+        getRawData.setCallback(new GetRawDataCallback() {
+            @Override
+            public void didDoneOnExecution() {
+                textView.setText(getRawData.getData());
+            }
+        });
+        getRawData.execute();
     }
 
     @Override
