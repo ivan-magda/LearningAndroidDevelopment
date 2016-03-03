@@ -20,14 +20,14 @@ public class MainActivity extends AppCompatActivity {
         // before the body of the inner class.
         final TextView textView = (TextView)findViewById(R.id.jsonTextView);
 
-        final GetRawData getRawData = new GetRawData("https://api.flickr.com/services/feeds/photos_public.gne?tags=sexy,lady&format=json&nojsoncallback=1");
-        getRawData.setCallback(new GetRawDataCallback() {
+        final GetFlickrJsonData jsonData = new GetFlickrJsonData("android, marshmallow", true);
+        jsonData.setCallback(new GetRawDataCallback() {
             @Override
             public void didDoneOnExecution() {
-                textView.setText(getRawData.getData());
+                textView.setText(jsonData.getData());
             }
         });
-        getRawData.execute();
+        jsonData.execute();
     }
 
     @Override

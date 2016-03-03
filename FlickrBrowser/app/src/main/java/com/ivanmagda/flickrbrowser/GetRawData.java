@@ -53,6 +53,10 @@ public class GetRawData {
         this.callback = callback;
     }
 
+    public void setRawUrl(String rawUrl) {
+        this.rawUrl = rawUrl;
+    }
+
     public void reset() {
         downloadStatus = DownloadStatus.Idle;
         rawUrl = null;
