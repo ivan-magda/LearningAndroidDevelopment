@@ -139,7 +139,9 @@ public class GetRawData {
                 downloadStatus = DownloadStatus.Ok;
             }
 
-            callback.didDoneOnExecution();
+            if (callback != null) {
+                callback.didDoneOnExecution();
+            }
         }
     }
 
