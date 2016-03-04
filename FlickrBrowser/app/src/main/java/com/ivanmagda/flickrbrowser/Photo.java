@@ -1,9 +1,29 @@
 package com.ivanmagda.flickrbrowser;
 
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+interface FlickrPhotoKey {
+
+    public static final String Items = "items";
+    public static final String Title = "title";
+    public static final String Media = "media";
+    public static final String PhotoUrl = "m";
+    public static final String Author = "author";
+    public static final String AuthorId = "author_id";
+    public static final String Link = "link";
+    public static final String Tags = "tags";
+
+}
+
 /**
  * Created by IvanMagda on 03.03.2016.
  */
 public class Photo {
+
+    private String LOG_TAG = Photo.class.getSimpleName();
 
     private String title;
     private String author;
@@ -19,6 +39,27 @@ public class Photo {
         this.link = link;
         this.tags = tags;
         this.image = image;
+    }
+
+    public Photo(JSONObject jsonPhoto) {
+        try {
+            // Get fields.
+            title = jsonPhoto.getString(FlickrPhotoKey.Title);
+            author = jsonPhoto.getString(FlickrPhotoKey.Author);
+            authorId = jsonPhoto.getString(FlickrPhotoKey.AuthorId);
+            link = jsonPhoto.getString(FlickrPhotoKey.Link);
+            tags = jsonPhoto.getString(FlickrPhotoKey.Tags);
+
+            // Get photo URL.
+            JSONObject jsonMedia = jsonPhoto.getJSONObject(FlickrPhotoKey.Media);
+            String photoUrl = jsonMedia.getString(FlickrPhotoKey.PhotoUrl);
+
+            image = photoUrl;
+
+        } catch (JSONException jsonError) {
+            jsonError.printStackTrace();
+            Log.e(LOG_TAG, "Error processing json data");
+        }
     }
 
     public String getTitle() {

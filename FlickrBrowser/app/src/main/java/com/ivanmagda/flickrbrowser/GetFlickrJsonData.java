@@ -58,18 +58,9 @@ public class GetFlickrJsonData extends GetRawData {
             return;
         }
 
-        final String flickrItems = "items";
-        final String flickrTitle = "title";
-        final String flickrMedia = "media";
-        final String flickrPhotoUrl = "m";
-        final String flickrAuthor = "author";
-        final String flickrAuthorId = "author_id";
-        final String flickrLink = "link";
-        final String flickrTags = "tags";
-
         try {
             JSONObject jsonData = new JSONObject(getData());
-            JSONArray itemsArray = jsonData.getJSONArray(flickrItems);
+            JSONArray itemsArray = jsonData.getJSONArray(FlickrPhotoKey.Items);
 
             // Process on JSON data.
             int length = itemsArray.length();
@@ -77,19 +68,8 @@ public class GetFlickrJsonData extends GetRawData {
                 // Get JSON item object at specific index.
                 JSONObject jsonPhoto = itemsArray.getJSONObject(i);
 
-                // Get fields.
-                String title = jsonPhoto.getString(flickrTitle);
-                String author = jsonPhoto.getString(flickrAuthor);
-                String authorId = jsonPhoto.getString(flickrAuthorId);
-                String link = jsonPhoto.getString(flickrLink);
-                String tags = jsonPhoto.getString(flickrTags);
-
-                // Get photo URL.
-                JSONObject jsonMedia = jsonPhoto.getJSONObject(flickrMedia);
-                String photoUrl = jsonMedia.getString(flickrPhotoUrl);
-
                 // Create Photo object and append it to the photo array.
-                Photo photo = new Photo(title, author, authorId, link, tags, photoUrl);
+                Photo photo = new Photo(jsonPhoto);
                 Log.v(LOG_TAG, photo.toString());
 
                 photos.add(photo);
