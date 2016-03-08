@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,20 @@ public class MainActivity extends BaseActivity {
         flickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(MainActivity.this,
                 new ArrayList<Photo>());
         recyclerView.setAdapter(flickrRecyclerViewAdapter);
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView,
+                new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int idxPosition) {
+                Log.d(LOG_TAG, "Gesture detected at idx: " + Integer.toString(idxPosition));
+                Toast.makeText(MainActivity.this, "Normal tap", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(View view, int idxPosition) {
+                Log.d(LOG_TAG, "Gesture detected at idx: " + Integer.toString(idxPosition));
+                Toast.makeText(MainActivity.this, "Long tap", Toast.LENGTH_SHORT).show();
+            }
+        }));
     }
 
     @Override
