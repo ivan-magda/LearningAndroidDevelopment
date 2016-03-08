@@ -1,6 +1,9 @@
 package com.ivanmagda.flickrbrowser;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -46,12 +49,34 @@ public class MainActivity extends BaseActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.menu_search) {
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (flickrRecyclerViewAdapter != null) {
+            String query = getSavedPreferenceData(FLICKR_QUERY);
+            if (query.length() > 0) {
+                ProcessPhotos processPhotos = new ProcessPhotos(query, true);
+                processPhotos.execute();
+            }
+        }
+    }
+
+    private String getSavedPreferenceData(String key) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        return sharedPreferences.getString(key, "");
     }
 
     public class ProcessPhotos extends GetFlickrJsonData {
