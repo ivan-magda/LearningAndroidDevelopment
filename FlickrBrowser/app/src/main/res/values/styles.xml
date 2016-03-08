@@ -1,8 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
     <style name="Theme.Base" parent="AppTheme">
         <item name="colorPrimary">@color/flickrPrimaryBackgroundColor</item>
@@ -13,10 +12,9 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Flickr" parent="Theme.Base">
-    </style>
+    <style name="Theme.Flickr" parent="Theme.Base"></style>
 
-    <style name="ActionBarThemeOverlay" parent="" >
+    <style name="ActionBarThemeOverlay" parent="">
         <item name="android:textColorPrimary">@color/flickrPrimaryTextColor</item>
         <item name="colorControlHighlight">@color/flickrBackgroundColor</item>
         <item name="android:actionMenuTextColor">@color/flickrPrimaryTextColor</item>
@@ -24,9 +22,13 @@
         <item name="android:background">@color/flickrPrimaryBackgroundColor</item>
     </style>
 
-    <style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title" >
+    <style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/flickrPrimaryTextColor</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="Theme.Flickr.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Flickr.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
