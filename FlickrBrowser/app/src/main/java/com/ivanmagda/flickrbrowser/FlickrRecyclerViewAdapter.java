@@ -52,4 +52,10 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrImageV
 
         return flickrImageViewHolder;
     }
+
+    public void reloadWithNewData(List<Photo> photos) {
+        photosList = photos;
+        notifyDataSetChanged();
+    }
+
 }

@@ -27,11 +27,12 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         activateToolbar();
 
-        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ProcessPhotos processPhotos = new ProcessPhotos("nature, sun, landscape, sightseeing", true);
-        processPhotos.execute();
+        flickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(MainActivity.this,
+                new ArrayList<Photo>());
+        recyclerView.setAdapter(flickrRecyclerViewAdapter);
     }
 
     @Override
@@ -65,12 +66,10 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-        if (flickrRecyclerViewAdapter != null) {
-            String query = getSavedPreferenceData(FLICKR_QUERY);
-            if (query.length() > 0) {
-                ProcessPhotos processPhotos = new ProcessPhotos(query, true);
-                processPhotos.execute();
-            }
+        String query = getSavedPreferenceData(FLICKR_QUERY);
+        if (query.length() > 0) {
+            ProcessPhotos processPhotos = new ProcessPhotos(query, true);
+            processPhotos.execute();
         }
     }
 
@@ -100,9 +99,7 @@ public class MainActivity extends BaseActivity {
                 super.onPostExecute(resultData);
 
                 photosList = getPhotos();
-
-                flickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(MainActivity.this, photosList);
-                recyclerView.setAdapter(flickrRecyclerViewAdapter);
+                flickrRecyclerViewAdapter.reloadWithNewData(photosList);
             }
 
         }
