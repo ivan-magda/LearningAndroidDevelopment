@@ -51,7 +51,6 @@ public class Photo implements Serializable {
             title = jsonPhoto.getString(FlickrPhotoKey.Title);
             author = jsonPhoto.getString(FlickrPhotoKey.Author);
             authorId = jsonPhoto.getString(FlickrPhotoKey.AuthorId);
-            link = jsonPhoto.getString(FlickrPhotoKey.Link);
             tags = jsonPhoto.getString(FlickrPhotoKey.Tags);
 
             // Get photo URL.
@@ -59,6 +58,7 @@ public class Photo implements Serializable {
             String photoUrl = jsonMedia.getString(FlickrPhotoKey.PhotoUrl);
 
             image = photoUrl;
+            link = photoUrl.replaceFirst("_m.", "_b.");
 
         } catch (JSONException jsonError) {
             jsonError.printStackTrace();
