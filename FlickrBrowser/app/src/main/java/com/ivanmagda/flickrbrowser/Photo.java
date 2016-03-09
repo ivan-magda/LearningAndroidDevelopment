@@ -5,6 +5,8 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 interface FlickrPhotoKey {
 
     public static final String Items = "items";
@@ -21,7 +23,9 @@ interface FlickrPhotoKey {
 /**
  * Created by IvanMagda on 03.03.2016.
  */
-public class Photo {
+public class Photo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String LOG_TAG = Photo.class.getSimpleName();
 
@@ -60,6 +64,10 @@ public class Photo {
             jsonError.printStackTrace();
             Log.e(LOG_TAG, "Error processing json data");
         }
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public String getTitle() {

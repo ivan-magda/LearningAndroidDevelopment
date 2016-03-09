@@ -47,7 +47,10 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onItemLongClick(View view, int idxPosition) {
                 Log.d(LOG_TAG, "Gesture detected at idx: " + Integer.toString(idxPosition));
-                Toast.makeText(MainActivity.this, "Long tap", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, PhotoDetailActivity.class);
+                intent.putExtra(PHOTO_TRANSFER, flickrRecyclerViewAdapter.getPhoto(idxPosition));
+                startActivity(intent);
             }
         }));
     }
