@@ -7,6 +7,47 @@ course on [Udemy.com](https://www.udemy.com/courses/)
 
 and so on.
 
+Here the list of applications:
+* Hello World
+* Button Counter
+* Calculator
+* Top 25 Free Apps
+* The YouTube Player
+* Flickr Browser
+
+### [Hello World](../master/HelloWorld)
+This's just _Hello World_ app.
+
+<img src="https://github.com/vanyaland/LearningAndroidDevelopment/blob/master/Screenshots/HelloWorld/hello-world-main-activity.png" width="240" height="400">
+
+### [Button Counter](../master/ButtonClicker)
+This app shows the number of clicks on the "Press Me" button.
+
+<img src="https://github.com/vanyaland/LearningAndroidDevelopment/blob/master/Screenshots/ButtonCounter/button-counter-main-activity.png" width="240" height="400">
+
+### [Calculator](../master/Calculator)
+Perform mathematical operations on two numbers and displays the result of calculation.
+
+<img src="https://github.com/vanyaland/LearningAndroidDevelopment/blob/master/Screenshots/Calculator/calculator-main-activity.png" width="240" height="400">
+
+### [Top 25 Free Apps](../master/Top25FreeApps)
+This app uses [Apple RSS Feed](http://www.apple.com/rss/) to retrive the content about the **_Top 25 Free Apps_**. Returned data is in JSON format.
+Also you can parse the other RSS feeds by passing other feed link to this place in the code in **MainActivity.java**.
+```
+DownloadData downloadData = new DownloadData();
+downloadData.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=25/xml");
+```
+
+<img src="https://github.com/vanyaland/LearningAndroidDevelopment/blob/master/Screenshots/Top25FreeApps/free-apps-main-activity.png" width="240" height="400">
+
+### [The YouTube Player](../master/YouTubePlayer)
+This app uses [YouTube API](https://developers.google.com/youtube/) to watch YouTube content. If you want run this app, then you probably need real physical device, because on AVD doesn't have YouTube installed and other necessary services.
+
+YouTube _video_ and _playlist_ ids are **hardcoded** in the code, if you want to watch other content, then replace this ids with your own.
+
+
+<img src="https://github.com/vanyaland/LearningAndroidDevelopment/blob/master/Screenshots/YouTubePlayer/youtube-player-main-activity.png" width="240" height="400">
+
 ### [Flickr Browser](../master/FlickrBrowser)
 Search for photos using [Flickr API](https://www.flickr.com/services/developer) in it's public photos feed.
 You can search for multiple tags and take a look on photos in detail activity.
