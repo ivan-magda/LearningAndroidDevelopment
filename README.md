@@ -7,7 +7,7 @@ course on [Udemy.com](https://www.udemy.com/courses/)
 
 and so on.
 
-Here the list of applications:
+Here is the list of applications:
 * Hello World
 * Button Counter
 * Calculator
