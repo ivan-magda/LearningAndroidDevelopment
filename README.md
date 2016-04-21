@@ -5,8 +5,6 @@ Such as:
 course on [Udemy.com](https://www.udemy.com/courses/)
 * Hands on Android tutorials on [Raywenderlich.com](https://www.raywenderlich.com/category/android)
 
-and so on.
-
 Here is the list of applications:
 * Hello World
 * Button Counter
