@@ -10,6 +10,7 @@ Here is the list of applications:
 * Button Counter
 * Calculator
 * Top 25 Free Apps
+* Retrofit Weather
 * The YouTube Player
 * Flickr Browser
 
@@ -37,6 +38,12 @@ downloadData.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/
 ```
 
 <img src="https://github.com/vanyaland/LearningAndroidDevelopment/blob/master/Screenshots/Top25FreeApps/free-apps-main-activity.png" width="240" height="400">
+
+### [Retrofit Weather](../master/RetrofitWeather)
+This app uses [Yahoo Weather API](https://developer.yahoo.com/weather/) to fetch current weather info.
+For fetching data over the network uses a type-safe HTTP client for Android and Java [Retrofit](http://square.github.io/retrofit/).
+
+<img src="https://github.com/vanyaland/LearningAndroidDevelopment/blob/master/Screenshots/RetrofitWeather/device-2016-05-01-165048.png" width="360" height="640">
 
 ### [The YouTube Player](../master/YouTubePlayer)
 This app uses [YouTube API](https://developers.google.com/youtube/) to watch YouTube content. If you want run this app, then you probably need real physical device, because on AVD doesn't have YouTube installed and other necessary services.
